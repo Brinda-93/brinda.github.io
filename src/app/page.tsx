@@ -31,7 +31,7 @@ export default function Home() {
         <EducationItem
           degree="Bachelor of Engineering.Tech"
           department="Electronics and Communcation Engineering"
-          specialization=""
+          specialization=" "
           institution="PES University"
           country="Bangalore, India"
           link="https://www.pes.edu"
@@ -60,7 +60,7 @@ export default function Home() {
       <SectionHeader title="Work Experience" />
       <div className="p-10">
         <ExperienceItem
-          role="Technical Project Leadr"
+          role="Technical Project Lead"
           company="Velankani AI and Cloud Solutions LLP"
           country="Bangalore, India"
           link="https://www.velankanigroup.com"
@@ -74,13 +74,11 @@ export default function Home() {
           duration="2021 - 2022"
         />
       </div>
-      //
       <SectionHeader title="Awards & Recognitions" />
       <div className="p-10">
         <AwardItem title="Best AI Research Paper" organization="ICML 2023" year="2023" />
         <AwardItem title="Top Innovator Award" organization="TechFest 2022" year="2022" />
       </div>
-      //
       <SectionHeader title="Publications" />
       <div className="p-10">
         <PublicationItem title="Deep Learning for Medical Imaging" journal="IEEE Transactions on AI" link="https://ieeexplore.ieee.org" year="2023" />
@@ -122,10 +120,9 @@ const EducationItem = ({ degree, department, specialization, institution, countr
   </motion.div>
 );
 
-const ExperienceItem = ({ role, company, country, link, duration }: { role: string; specialization: string; company: string; country: string; link: string; duration: string }) => (
+const ExperienceItem = ({ role, company, country, link, duration }: { role: string; company: string; country: string; link: string; duration: string }) => (
   <motion.div className="bg-blue-800 p-6 rounded-lg shadow-lg text-center mb-4">
     <h3 className="text-xl font-bold">{role}</h3>
-    <p className="text-lg italic">{specialization}</p>
     <a href={link} target="_blank" rel="noopener noreferrer" className="mt-2 text-blue-300 underline hover:text-blue-500">{company}, {country}</a>
     <p className="mt-1 text-gray-300">{duration}</p>
   </motion.div>
