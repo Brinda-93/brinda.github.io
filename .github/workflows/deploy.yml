@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -36,3 +36,4 @@ jobs:
         with:
           branch: gh-pages
           folder: out
+          token: ${{ secrets.GITHUB_TOKEN }}
