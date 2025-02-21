@@ -1,42 +1,91 @@
 "use client";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import "./globals.css"; // Import the global styles
 
 export default function Home() {
   return (
-    <main className="bg-blue-900 text-white min-h-screen">
+    <div>
       {/* Hero Section */}
-      <section className="h-screen flex flex-col justify-center items-center text-center p-10">
-        <motion.h1
-          className="text-6xl font-bold"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          Brinda Navakumar
-        </motion.h1>
-        <motion.p
-          className="text-xl mt-4 max-w-2xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-        >
-          Passionate Software Engineer specializing in Full-Stack Development, 
-          AI, and Web Technologies. Dedicated to building impactful digital experiences.
-        </motion.p>
+      <section className="hero">
+        <Image src="/background.jpeg" alt="Background" layout="fill" objectFit="cover" className="absolute opacity-30" />
+        <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+          <Image src="/profile.jpg" width={150} height={150} className="profile-img" alt="Profile Picture" />
+          <h1 className="text-4xl font-bold mt-4">Brinda Navakumar</h1>
+          <p className="text-lg mt-2">Computer Vision Engineer | Robotics - AI Enthusiast</p>
+        </motion.div>
       </section>
 
       {/* Sections */}
-      <SectionHeader title="Education" />
-      <div className="p-10">
-        <EducationItem
-          degree="Bachelor of Engineering.Tech"
-          department="Electronics and Communcation Engineering"
-          specialization=" "
-          institution="PES University"
-          country="Bangalore, India"
-          link="https://www.pes.edu"
-          year="2011 - 2015"
-        />
+      <div className="section">
+        <Section title="Education">
+          <EducationEntry degree="Bachelor of Engineering" school="PES University" department="Electronics and Communcation Engineering" country="Bangalore, India" specialization="" link="https://www.pes.edu" />
+          <EducationEntry degree="Bachelor of Engineering" school="PES University" department="Electronics and Communcation Engineering" country="Bangalore, India" specialization="" link="https://www.pes.edu" />
+        </Section>
+
+        <Section title="Work Experience">
+          <WorkEntry company="Google" role="Software Engineer" country="USA" duration="2020 - Present" link="https://www.google.com" />
+          <WorkEntry company="Microsoft" role="AI Researcher" country="USA" duration="2018 - 2020" link="https://www.microsoft.com" />
+        </Section>
+
+        <Section title="Projects">
+          <Project title="AI Chatbot" description="Developed an AI-powered chatbot for customer support." />
+          <Project title="Portfolio Website" description="Built a responsive personal portfolio using Next.js." />
+        </Section>
+
+        <Section title="Awards & Recognitions">
+          <ListEntry text="Best AI Research Paper - 2022" />
+          <ListEntry text="Top 10 Innovators in Tech - Forbes 2021" />
+        </Section>
+      </div>
+    </div>
+  );
+}
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="fade-in">
+      <h2>{title}</h2>
+      <div>{children}</div>
+    </motion.div>
+  );
+}
+
+function EducationEntry({ school, department, country, specialization, link }: { school: string; department: string; country: string; specialization: string; link: string }) {
+  return (
+    <div className="entry">
+      <a href={link} target="_blank">{school}</a>
+      <p>{department} - {specialization}</p>
+      <p className="text-sm">{country}</p>
+    </div>
+  );
+}
+
+function WorkEntry({ company, role, country, duration, link }: { company: string; role: string; country: string; duration: string; link: string }) {
+  return (
+    <div className="entry">
+      <a href={link} target="_blank">{company}</a>
+      <p>{role}</p>
+      <p className="text-sm">{country} | {duration}</p>
+    </div>
+  );
+}
+
+function Project({ title, description }: { title: string; description: string }) {
+  return (
+    <div className="entry">
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </div>
+  );
+}
+
+function ListEntry({ text }: { text: string }) {
+  return <p className="list-entry">{text}</p>;
+}
+
+
         <EducationItem
           degree="Master of Technology"
           department="Electronics and Communication Engineering"
