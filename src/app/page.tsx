@@ -8,9 +8,9 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       <section className="hero">
-        <Image src="/background.jpeg" alt="Background" layout="fill" objectFit="cover" className="absolute opacity-30" />
+        <Image src="./app/background.jpeg" alt="Background" layout="fill" objectFit="cover" className="absolute opacity-30" />
         <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-          <Image src="/profile.jpg" width={150} height={150} className="profile-img" alt="Profile Picture" />
+          <Image src="./app/profile.jpeg" width={150} height={150} className="profile-img" alt="Profile Picture" />
           <h1 className="text-4xl font-bold mt-4">Brinda Navakumar</h1>
           <p className="text-lg mt-2">Computer Vision Engineer | Robotics - AI Enthusiast</p>
         </motion.div>
